@@ -2,6 +2,7 @@
 
   var app = angular.module('fishfolio', [
     'fishfolio.config',
+    'ngCookies',
     'ui.router',
     'ngDialog',
     'firebase',
@@ -36,6 +37,7 @@
     }
   ]);
 
+  require('./i18n')(app);
   require('./services')(app);
   require('./controllers')(app);
   require('./directives')(app);

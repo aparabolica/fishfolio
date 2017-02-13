@@ -5,7 +5,8 @@
     app.factory('FFService', [
       '$firebaseObject',
       '$firebaseArray',
-      function($firebaseObject, $firebaseArray) {
+      '$filter',
+      function($firebaseObject, $firebaseArray, $filter) {
         return {
           getUniq: function(collection, parameter, split) {
             split = split || false;
@@ -14,7 +15,7 @@
               var paramVals = [];
               if(item[parameter]) {
                 if(split) {
-                  item[parameter].split(split).forEach(function(val) {
+                  $filter('translate')(item[parameter]).split(split).forEach(function(val) {
                     paramVals.push(val.trim());
                   });
                 } else {

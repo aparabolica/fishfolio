@@ -1,8 +1,11 @@
 h2 Settings
-form(ng-submit="about.$save()")
-  input#title(type="text" ng-model="about.title" placeholder="Site title")
-  input#tagline(type="text" ng-model="about.tagline" placeholder="Site tagline")
-  textarea#description(ng-model="about.description" placeholder="Description")
+form(ng-submit="saveSettings(about)")
+  .lang-selector
+    | Language:
+    a(ng-repeat="l in langs" href="javascript:void(0);" ng-click="formLang(l)" ng-class="{active: lang == l}") {{l}}
+  input#title(type="text" ng-model="about.title[lang]" placeholder="Site title")
+  input#tagline(type="text" ng-model="about.tagline[lang]" placeholder="Site tagline")
+  textarea#description(ng-model="about.description[lang]" placeholder="Description")
   h3 About you
   input#github(type="text" ng-model="about.github" placeholder="GitHub username")
   input(type="submit" value="Submit")

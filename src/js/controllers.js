@@ -11,7 +11,8 @@
       '$firebaseAuth',
       'ngDialog',
       '$http',
-      function($scope, $state, $firebaseArray, $firebaseObject, FF, $firebaseAuth, ngDialog, $http) {
+      'Lang',
+      function($scope, $state, $firebaseArray, $firebaseObject, FF, $firebaseAuth, ngDialog, $http, Lang) {
 
         var ref = firebase.database().ref();
         $scope.authObj = $firebaseAuth();
@@ -22,6 +23,16 @@
         }, function(auth) {
           $scope.user = auth;
         });
+
+        // Lang editor
+        $scope.langs = Lang.getLanguages();
+        $scope.lang = Lang.get();
+        $scope.setLang = function(lang) {
+          Lang.set(lang);
+        };
+        $scope.formLang = function(lang) {
+          $scope.lang = lang;
+        };
 
         $scope.$on('$stateChangeSuccess', function(ev, toState, toParams) {
           if(toParams.projectId) {
@@ -87,9 +98,31 @@
         $scope.about = $firebaseObject(about);
 
         $scope.settings = function() {
+          var translatableFields = ['title', 'tagline', 'description'];
+          $scope.about.$loaded().then(function(about) {
+            about.$translatedKeys = [];
+            for(var key in about) {
+              if(translatableFields.indexOf(key) != -1) {
+                about.$translatedKeys.push(key);
+                about[key] = langSplit(about[key]);
+              }
+            }
+          });
           $scope.aboutDialog = ngDialog.open({
             template: 'views/settings.html',
             scope: $scope
+          });
+        };
+
+        $scope.saveSettings = function(about) {
+          if(about.$translatedKeys && about.$translatedKeys.length) {
+            about.$translatedKeys.forEach(function(key) {
+              about[key] = langJoin(about[key]);
+            });
+          }
+          about.$save().then(function() {
+            $scope.aboutDialog.close();
+            $scope.aboutDialog = null;
           });
         };
 
@@ -108,10 +141,41 @@
           } else {
             $scope.project = project;
           }
+          var translatableFields = ['name', 'description', 'long_description', 'tags', 'skills'];
+          $scope.project.$loaded().then(function(project) {
+            project.$translatedKeys = [];
+            for(var key in project) {
+              if(translatableFields.indexOf(key) != -1) {
+                project.$translatedKeys.push(key);
+                project[key] = langSplit(project[key]);
+              }
+            }
+          });
           $scope.editDialog = ngDialog.open({
             template: 'views/project-edit.html',
             scope: $scope
           });
+        };
+
+        $scope.saveProject = function(project) {
+          if(project.$translatedKeys && project.$translatedKeys.length) {
+            project.$translatedKeys.forEach(function(key) {
+              project[key] = langJoin(project[key]);
+            });
+          }
+          if(project.$id) {
+            project.$save().then(function() {
+              console.log('saved', $scope.editDialog);
+              $scope.editDialog.close();
+              $scope.editDialog = null;
+            });
+          } else {
+            $scope.projects.$add(project).then(function() {
+              console.log('created', $scope.editDialog);
+              $scope.editDialog.close();
+              $scope.editDialog = null;
+            });
+          }
         };
 
         $scope.remove = function(project) {

@@ -42,9 +42,12 @@ html(ng-controller="SiteCtrl")
           a.credit(href="http://github.com/miguelpeixe/fishfolio" rel="external" target="_blank" title="Fork me on GitHub") fishfolio
     
     nav#top-nav
-      a(href="javascript:void(0);" ng-click="login()" ng-hide="user") Login
-      a(href="javascript:void(0);" ng-click="settings()" ng-show="user") Settings
-      a(href="javascript:void(0);" ng-click="authObj.$unauth()" ng-show="user") Logout
+      .lang-nav
+        a(ng-repeat="lang in langs" href="javascript:void(0);" ng-click="setLang(lang)") {{lang}}
+      .site-meta
+        a(href="javascript:void(0);" ng-click="login()" ng-hide="user") Login
+        a(href="javascript:void(0);" ng-click="settings()" ng-show="user") Settings
+        a(href="javascript:void(0);" ng-click="authObj.$unauth()" ng-show="user") Logout
 
     script(type="text/javascript" src="static/underscore/underscore-min.js")
     script(type="text/javascript" src="static/jquery/dist/jquery.min.js")
@@ -56,6 +59,7 @@ html(ng-controller="SiteCtrl")
     
     script(type="text/javascript" src="static/angular/angular.min.js")
     script(type="text/javascript" src="static/ui-router/release/angular-ui-router.min.js")
+    script(type="text/javascript" src="static/angular-cookies/angular-cookies.min.js")
     script(type="text/javascript" src="static/ng-dialog/js/ngDialog.min.js")
     script(type="text/javascript" src="static/angularfire/dist/angularfire.min.js")
     
