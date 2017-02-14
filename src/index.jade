@@ -21,7 +21,7 @@ block body
       .container
         .twelve.columns
           .header-content
-            h2 Projects
+            h2(ng-show="user") Projects
             button(ng-show="user" ng-click="new()" title="Add new project") +
         .twelve.columns
           nav.header-nav
