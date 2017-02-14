@@ -15,7 +15,7 @@
   ],
   "dependencies": {
     "angular": "~1.6.2",
-    "ui-router": "~0.2.17",
+    "ui-router": "~0.4.2",
     "jquery": "~2.2.0",
     "skeleton": "~2.0.4",
     "angularfire": "~2.3.0",

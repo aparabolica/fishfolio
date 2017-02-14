@@ -106,12 +106,12 @@
           angular.element('body').css({opacity:1});
         });
 
+        var aboutTranslatableFields = ['title', 'tagline', 'description'];
         $scope.settings = function() {
-          var translatableFields = ['title', 'tagline', 'description'];
           $scope.about.$loaded().then(function(about) {
             about.$translatedKeys = [];
             for(var key in about) {
-              if(translatableFields.indexOf(key) != -1) {
+              if(aobutTranslatableFields.indexOf(key) != -1) {
                 about.$translatedKeys.push(key);
                 about[key] = langSplit(about[key]);
               }
@@ -124,11 +124,10 @@
         };
 
         $scope.saveSettings = function(about) {
-          if(about.$translatedKeys && about.$translatedKeys.length) {
-            about.$translatedKeys.forEach(function(key) {
+          aboutTranslatableFields.forEach(function(key) {
+            if(about[key])
               about[key] = langJoin(about[key]);
-            });
-          }
+          });
           about.$save().then(function() {
             $scope.aboutDialog.close();
             $scope.aboutDialog = null;
