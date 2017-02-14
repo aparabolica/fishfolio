@@ -9,7 +9,7 @@ form(ng-submit="saveProject(project)")
   input#url(type="text" ng-model="project.url" placeholder="URL")
   input#github(type="text" ng-model="project.github" placeholder=":owner/:repo")
   input#tags(type="text" ng-model="project.tags[lang]" placeholder="Project tags (comma separated)")
-  input#skills(type="text" ng-model="project.skills[lang]" placeholder="Skills (comma separated)")
+  input#techs(type="text" ng-model="project.techs[lang]" placeholder="Technologies (comma separated)")
   textarea#description(ng-model="project.description[lang]" placeholder="Description")
   .checkbox-field
     input#mobile(type="checkbox" ng-model="project.mobile") 

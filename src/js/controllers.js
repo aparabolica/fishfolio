@@ -96,7 +96,7 @@
 
         $scope.projects.$watch(function() {
           $scope.tags = FF.getUniq($scope.projects, 'tags', ',');
-          $scope.skills = FF.getUniq($scope.projects, 'skills', ',');
+          $scope.techs = FF.getUniq($scope.projects, 'techs', ',');
         });
 
         var about = firebase.database().ref().child('about');
@@ -150,7 +150,7 @@
           } else {
             $scope.project = project;
           }
-          var translatableFields = ['name', 'description', 'long_description', 'tags', 'skills'];
+          var translatableFields = ['name', 'description', 'long_description', 'tags', 'techs'];
           $scope.project.$loaded().then(function(project) {
             project.$translatedKeys = [];
             for(var key in project) {
