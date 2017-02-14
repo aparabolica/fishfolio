@@ -96,7 +96,6 @@
                 data.data.forEach(function(week) {
                   $scope.ghData[project.$id].totalCommits += week.total;
                   if(week.total) {
-                    console.log(project.$id, week.week);
                     $scope.ghData[project.$id].latestCommit = week.week;
                   }
                 });
@@ -122,7 +121,7 @@
           $scope.about.$loaded().then(function(about) {
             about.$translatedKeys = [];
             for(var key in about) {
-              if(aobutTranslatableFields.indexOf(key) != -1) {
+              if(aboutTranslatableFields.indexOf(key) != -1) {
                 about.$translatedKeys.push(key);
                 about[key] = langSplit(about[key]);
               }
