@@ -27,6 +27,11 @@
         // Lang editor
         $scope.langs = Lang.getLanguages();
         $scope.lang = Lang.get();
+        $scope.$watch(function() {
+          return Lang.get();
+        }, function(lang) {
+          $scope.lang = lang;
+        });
         $scope.setLang = function(lang) {
           Lang.set(lang);
         };
@@ -96,6 +101,10 @@
 
         var about = firebase.database().ref().child('about');
         $scope.about = $firebaseObject(about);
+
+        $scope.about.$loaded().then(function() {
+          angular.element('body').css({opacity:1});
+        });
 
         $scope.settings = function() {
           var translatableFields = ['title', 'tagline', 'description'];
