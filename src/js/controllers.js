@@ -64,8 +64,10 @@
         $scope.filtered = {};
 
         $scope.filterProject = function(key, val) {
-          $scope.filtered[key] = val;
-          $scope.filtered = $scope.filtered;
+          if($scope.filtered[key] == val)
+            $scope.filtered[key] = null;
+          else
+            $scope.filtered[key] = val;
         };
 
         var projects = firebase.database().ref().child('projects');

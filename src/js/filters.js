@@ -3,14 +3,15 @@
   module.exports = function(app) {
 
     app.filter('byCommaTags', [
-      function() {
+      '$filter',
+      function($filter) {
         return function(input, tag, key) {
-          // console.log(arguments);
           if(!input || !tag || !key) {
             return input;
           } else {
-            _.filter(input, function(item) {
-              return _.find(item[key].split(','), function(t) {
+            return _.filter(input, function(item) {
+              var tags = $filter('translate')(item[key]);
+              return _.find(tags.split(','), function(t) {
                 return t.trim() == tag;
               });
             });
