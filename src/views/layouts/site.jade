@@ -43,7 +43,7 @@ html(ng-controller="SiteCtrl")
     
     nav#top-nav
       .lang-nav
-        a(ng-repeat="lang in langs" href="javascript:void(0);" ng-click="setLang(lang)") {{lang}}
+        a(ng-repeat="l in langs" href="javascript:void(0);" ng-click="setLang(l)" ng-class="{active: lang == l}") {{l}}
       .site-meta
         a(href="javascript:void(0);" ng-click="login()" ng-hide="user") Login
         a(href="javascript:void(0);" ng-click="settings()" ng-show="user") Settings

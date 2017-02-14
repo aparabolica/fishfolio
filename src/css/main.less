@@ -181,6 +181,11 @@ textarea {
     padding: 0 .7rem;
     margin-top: .2rem;
     margin-right: 1rem;
+    a {
+      &.active {
+        color: #000;
+      }
+    }
   }
 }
 
@@ -498,6 +503,25 @@ article.project {
     }
     form {
       margin: 0;
+    }
+    .lang-selector {
+      float: right;
+      margin: 0 0 2rem;
+      font-size: .8em;
+      text-transform: uppercase;
+      color: #999;
+      a {
+        color: #666;
+        text-decoration: none;
+        border: 1px solid #eee;
+        margin-left: .2rem;
+        font-size: .8em;
+        padding: .2rem .5rem;
+        &.active {
+          color: #333;
+          background: #fff;
+        }
+      }
     }
   }
 }
