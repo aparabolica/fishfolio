@@ -5,6 +5,7 @@
     app.filter('byCommaTags', [
       function() {
         return function(input, tag, key) {
+          // console.log(arguments);
           if(!input || !tag || !key) {
             return input;
           } else {

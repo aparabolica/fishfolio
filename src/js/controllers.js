@@ -65,6 +65,7 @@
 
         $scope.filterProject = function(key, val) {
           $scope.filtered[key] = val;
+          $scope.filtered = $scope.filtered;
         };
 
         var projects = firebase.database().ref().child('projects');
@@ -78,6 +79,12 @@
             total = $scope.ghData[project.$id].totalCommits;
           return total;
         }
+        $scope.latestCommit = function(project) {
+          var total;
+          if($scope.ghData[project.$id])
+            total = $scope.ghData[project.$id].latestCommit;
+          return total;
+        }
 
         $scope.projects.$loaded().then(function(projects) {
           projects.forEach(function(project) {
@@ -88,6 +95,10 @@
                 $scope.ghData[project.$id].totalCommits = 0;
                 data.data.forEach(function(week) {
                   $scope.ghData[project.$id].totalCommits += week.total;
+                  if(week.total) {
+                    console.log(project.$id, week.week);
+                    $scope.ghData[project.$id].latestCommit = week.week;
+                  }
                 });
               });
             }
