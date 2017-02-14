@@ -46,8 +46,8 @@ block body
             a(href="javascript:void(0);" ng-click="remove(project)" title="Remove") R
           h3 
             a(ui-sref="project({projectId: project['$id']})") {{project.name | translate}}
-          .project-meta
-            gh-chart(data="ghData[project.$id].commitActivity" width="150" height="60" line-color="'#999'" tooltip="false" ng-show="project.github")
+          .project-meta.container.full
+            gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="false" ng-show="project.github")
             p.tags(ng-show="project.tags")
               span(ng-repeat="tag in (project.tags | translate | commaSplit)") {{tag}}
           p.description {{project.description | translate}}

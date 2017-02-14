@@ -143,6 +143,8 @@
           });
         };
 
+        var projectTranslatableFields = ['name', 'description', 'long_description', 'tags', 'techs'];
+
         $scope.edit = function(project) {
           if(typeof project.$save !== 'function') {
             var project = firebase.database().ref().child('projects').child(project.$id);;
@@ -150,11 +152,10 @@
           } else {
             $scope.project = project;
           }
-          var translatableFields = ['name', 'description', 'long_description', 'tags', 'techs'];
           $scope.project.$loaded().then(function(project) {
             project.$translatedKeys = [];
             for(var key in project) {
-              if(translatableFields.indexOf(key) != -1) {
+              if(projectTranslatableFields.indexOf(key) != -1) {
                 project.$translatedKeys.push(key);
                 project[key] = langSplit(project[key]);
               }
@@ -167,20 +168,17 @@
         };
 
         $scope.saveProject = function(project) {
-          if(project.$translatedKeys && project.$translatedKeys.length) {
-            project.$translatedKeys.forEach(function(key) {
+          projectTranslatableFields.forEach(function(key) {
+            if(project[key])
               project[key] = langJoin(project[key]);
-            });
-          }
+          });
           if(project.$id) {
             project.$save().then(function() {
-              console.log('saved', $scope.editDialog);
               $scope.editDialog.close();
               $scope.editDialog = null;
             });
           } else {
             $scope.projects.$add(project).then(function() {
-              console.log('created', $scope.editDialog);
               $scope.editDialog.close();
               $scope.editDialog = null;
             });
