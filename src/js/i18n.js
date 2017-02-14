@@ -26,7 +26,6 @@
   };
 
   langGetSplitBlocks = function(text) {
-    console.log(text);
     var split_regex = /(<!--:[a-z]{2}-->|<!--:-->|\[:[a-z]{2}\]|\[:\]|\{:[a-z]{2}\}|\{:\})/gi;
     if(typeof text == 'string')
       return text.langsplit(split_regex);
