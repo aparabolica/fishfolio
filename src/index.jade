@@ -47,7 +47,7 @@ block body
           h3 
             a(ui-sref="project({projectId: project['$id']})") {{project.name | translate}}
           .project-meta.container.full
-            gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="false" ng-show="project.github")
+            gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="false" ng-show="project.github && latestCommit(project) !== -1")
             p.tags(ng-show="project.tags")
               span(ng-repeat="tag in (project.tags | translate | commaSplit)") {{tag}}
           p.description {{project.description | translate}}

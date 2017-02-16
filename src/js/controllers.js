@@ -85,6 +85,8 @@
           var total;
           if($scope.ghData[project.$id])
             total = $scope.ghData[project.$id].latestCommit;
+          if(!total)
+            total = -1;
           return total;
         }
 

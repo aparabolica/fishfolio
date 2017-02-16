@@ -13,7 +13,7 @@ section#projects.single-project
             a.rel(ng-href="{{project.url | translate}}" rel="external" target="_blank" title="{{project.name | translate}}") #
         .mobile-display(ng-show="project.mobile")
           web-device.mobile-device(src="project.mobile ? project.url : ''" width="360" height="640")
-    .gh
+    .gh(ng-show="project.github && latestCommit(project) !== -1")
       .container
         .twelve.columns
           h2 Recent activity on GitHub
