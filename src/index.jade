@@ -30,13 +30,13 @@ block body
                 .tags.nav-item(ng-show="tags")
                   h3 Project tags
                   .tag-content
-                    a(href="javascript:void(0);" ng-repeat="tag in tags | orderBy:'count':true" ng-click="filterProject('tags', tag.name)" ng-class="{active: filtered.tags == tag.name}") {{tag.name | translate}}
+                    a(href="javascript:void(0);" ng-repeat="tag in tags | orderBy:'name':false" ng-click="filterProject('tags', tag.name)" ng-class="{active: filtered.tags == tag.name}") {{tag.name | translate}}
                       span.count {{tag.count}}
               .six.columns
                 .techs.nav-item(ng-show="techs")
                   h3 Technologies
                   .tag-content
-                    a(href="javascript:void(0);" ng-repeat="tech in techs | orderBy:'count':true" ng-click="filterProject('techs', tech.name)" ng-class="{active: filtered.techs == tech.name}") {{tech.name | translate}}
+                    a(href="javascript:void(0);" ng-repeat="tech in techs | orderBy:'name':false" ng-click="filterProject('techs', tech.name)" ng-class="{active: filtered.techs == tech.name}") {{tech.name | translate}}
                       span.count {{tech.count}}
     article.project(ng-repeat="project in projects | byCommaTags:filtered.techs:'techs' | byCommaTags:filtered.tags:'tags' | orderBy:latestCommit:true" ng-hide="project.$id == viewingProject")
       .container

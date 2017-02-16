@@ -15,9 +15,12 @@
               var paramVals = [];
               if(item[parameter]) {
                 if(split) {
-                  $filter('translate')(item[parameter]).split(split).forEach(function(val) {
-                    paramVals.push(val.trim());
-                  });
+                  var itemVal = $filter('translate')(item[parameter]);
+                  if(itemVal) {
+                    itemVal.split(split).forEach(function(val) {
+                      paramVals.push(val.trim());
+                    });
+                  }
                 } else {
                   paramVals.push(item[parameter]);
                 }
