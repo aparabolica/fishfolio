@@ -11,6 +11,7 @@ form(ng-submit="saveProject(project)")
   input#tags(type="text" ng-model="project.tags[lang]" placeholder="Project tags (comma separated)")
   input#techs(type="text" ng-model="project.techs[lang]" placeholder="Technologies (comma separated)")
   textarea#description(ng-model="project.description[lang]" placeholder="Description")
+  .dropbox(ngf-drop ngf-select ngf-multiple="true" ngf-drag-over-class="'dragover'" ng-model="projectMedia.screenshots" ng-disabled="uploading") Drag files here or click to select
   .checkbox-field
     input#mobile(type="checkbox" ng-model="project.mobile") 
     label(for="mobile") Show mobile version

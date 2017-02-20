@@ -3,6 +3,7 @@
   var app = angular.module('fishfolio', [
     'fishfolio.config',
     'ngCookies',
+    'ngFileUpload',
     'ui.router',
     'ngDialog',
     'firebase',

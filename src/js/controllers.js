@@ -7,12 +7,13 @@
       '$state',
       '$firebaseArray',
       '$firebaseObject',
-      'FFService',
       '$firebaseAuth',
+      'FFService',
+      'StorageService',
       'ngDialog',
       '$http',
       'Lang',
-      function($scope, $state, $firebaseArray, $firebaseObject, FF, $firebaseAuth, ngDialog, $http, Lang) {
+      function($scope, $state, $firebaseArray, $firebaseObject, $firebaseAuth, FF, Storage, ngDialog, $http, Lang) {
 
         var ref = firebase.database().ref();
         $scope.authObj = $firebaseAuth();
@@ -159,6 +160,7 @@
         var projectTranslatableFields = ['name', 'description', 'long_description', 'tags', 'techs'];
 
         $scope.edit = function(project) {
+          $scope.projectMedia = {};
           if(typeof project.$save !== 'function') {
             var project = firebase.database().ref().child('projects').child(project.$id);;
             $scope.project = $firebaseObject(project);
@@ -180,18 +182,52 @@
           });
         };
 
-        $scope.saveProject = function(project) {
+        $scope.getScreenshots = function(project) {
+          var screenshots = firebase.storage().ref('screenshots/' + project.$id);
+          console.log($firebaseArray(screenshots));
+          return $firebaseArray(screenshots);
+        }
+
+        $scope.saveProject = function(project, cb) {
           projectTranslatableFields.forEach(function(key) {
             if(project[key])
               project[key] = langJoin(project[key]);
           });
           if(project.$id) {
             project.$save().then(function() {
+              if($scope.projectMedia.screenshots) {
+                var tasks = Storage.put($scope.projectMedia.screenshots, 'screenshots/' + project.$id);
+                tasks.forEach(function(task) {
+                  task.$progress(function() {
+                    // console.log(arguments);
+                  });
+                  task.$error(function() {
+                    // console.log(arguments);
+                  });
+                  task.$complete(function() {
+                    // console.log(arguments);
+                  });
+                });
+              }
               $scope.editDialog.close();
               $scope.editDialog = null;
             });
           } else {
             $scope.projects.$add(project).then(function() {
+              if($scope.projectMedia.screenshots) {
+                var task = Storage.put($scope.projectMedia.screenshots, 'screenshots/' + project.$id);
+                tasks.forEach(function(task) {
+                  task.$progress(function() {
+                    // console.log(arguments);
+                  });
+                  task.$error(function() {
+                    // console.log(arguments);
+                  });
+                  task.$complete(function() {
+                    // console.log(arguments);
+                  });
+                });
+              }
               $scope.editDialog.close();
               $scope.editDialog = null;
             });

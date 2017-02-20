@@ -44,7 +44,7 @@ block body
           .actions(ng-show="user")
             a(href="javascript:void(0);" ng-click="edit(project)" title="Edit") E
             a(href="javascript:void(0);" ng-click="remove(project)" title="Remove") R
-          h3 
+          h3
             a(ui-sref="project({projectId: project['$id']})") {{project.name | translate}}
           .project-meta.container.full
             gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="false" ng-show="project.github && latestCommit(project) !== -1")

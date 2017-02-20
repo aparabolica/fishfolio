@@ -44,6 +44,27 @@
       }
     ]);
 
+    app.factory('StorageService', [
+      '$firebaseStorage',
+      function($firebaseStorage) {
+        var storageRef = firebase.storage().ref();
+        return {
+          put: function(files, putRef) {
+            if(!_.isArray(files)) {
+              files = [files];
+            }
+            var tasks = [];
+            files.forEach(function(file, i) {
+              var ref = storageRef.child(putRef + '/' + file.name);
+              var storage = $firebaseStorage(ref);
+              tasks.push(storage.$put(file));
+            });
+            return tasks;
+          }
+        }
+      }
+    ]);
+
   };
 
 })();
