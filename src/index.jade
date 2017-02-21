@@ -59,14 +59,14 @@ block body
         .four.columns
           .project-meta.container.full
             gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="false" ng-show="project.github && latestCommit(project) !== -1")
-            .links
-              a.fa.fa-link(href="{{project.url}}" ng-show="project.url" target="_blank" rel="external")
-              a.fa.fa-github(href="http://github.com/{{project.github}}" ng-show="project.github" target="_blank" rel="external")
             p.tags(ng-show="project.tags")
               span.fa.fa-tag
               span(ng-repeat="tag in (project.tags | translate | commaSplit)") {{tag}}
             p.tags(ng-show="project.techs")
               span.fa.fa-gear
               span(ng-repeat="tech in (project.techs | translate | commaSplit)") {{tech}}
+            .links
+              a.fa.fa-link(href="{{project.url}}" ng-show="project.url" target="_blank" rel="external")
+                a.fa.fa-github(href="http://github.com/{{project.github}}" ng-show="project.github" target="_blank" rel="external")
         .six.columns
           p.description {{project.description | translate}}
