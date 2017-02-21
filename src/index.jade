@@ -9,15 +9,15 @@ block header-branding
   h1
     a(ui-sref="home") {{about.title || 'Site title' | translate}}
   p {{about.tagline || 'Tagline' | translate}}
-  .social
-    a.fa.fa-github(href="http://github.com/{{about.github}}" rel="external" target="_blank" ng-show="about.github")
-    a.fa.fa-facebook(href="{{about.facebook}}" rel="external" target="_blank" ng-show="about.facebook")
-    a.fa.fa-twitter(href="http://twitter.com/{{about.twitter}}" rel="external" target="_blank" ng-show="about.twitter")
-    a.fa.fa-envelope(href="mailto:{{about.email}}" rel="external" target="_blank" ng-show="about.email")
 
 block sections
   section#welcome
     p {{about.description || 'Description' | translate}}
+    .social
+      a.fa.fa-github(href="http://github.com/{{about.github}}" rel="external" target="_blank" ng-show="about.github")
+      a.fa.fa-facebook(href="{{about.facebook}}" rel="external" target="_blank" ng-show="about.facebook")
+      a.fa.fa-twitter(href="http://twitter.com/{{about.twitter}}" rel="external" target="_blank" ng-show="about.twitter")
+      a.fa.fa-envelope(href="mailto:{{about.email}}" rel="external" target="_blank" ng-show="about.email")
 
 block body
   div(ui-view autoscroll="true")
@@ -33,13 +33,17 @@ block body
             .container.full
               .six.columns
                 .tags.nav-item(ng-show="tags")
-                  h3 Project tags
+                  h3
+                    span.fa.fa-tag
+                    | Project tags
                   .tag-content
                     a(href="javascript:void(0);" ng-repeat="tag in tags | orderBy:'name':false" ng-click="filterProject('tags', tag.name)" ng-class="{active: filtered.tags == tag.name}") {{tag.name | translate}}
                       span.count {{tag.count}}
               .six.columns
                 .techs.nav-item(ng-show="techs")
-                  h3 Technologies
+                  h3
+                    span.fa.fa-gear
+                    | Technologies
                   .tag-content
                     a(href="javascript:void(0);" ng-repeat="tech in techs | orderBy:'name':false" ng-click="filterProject('techs', tech.name)" ng-class="{active: filtered.techs == tech.name}") {{tech.name | translate}}
                       span.count {{tech.count}}
