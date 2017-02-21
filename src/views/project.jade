@@ -2,7 +2,7 @@ section#projects.single-project
   article.project
     .container
       .four.columns
-        h2 &#9758; {{project.name | translate}}
+        h2 {{project.name | translate}}
         p(ng-show="project.description") {{project.description | translate}}
         .actions(ng-show="user")
           a(href="javascript:void(0);" ng-click="edit(project)" title="Edit") E

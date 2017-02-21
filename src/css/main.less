@@ -158,6 +158,15 @@ textarea {
     text-transform: lowercase;
     color: #666;
   }
+  .social {
+    font-size: 1.5em;
+    a {
+      display: inline-block;
+      margin-right: 1.5rem;
+      text-decoration: none;
+      border: 0;
+    }
+  }
 }
 
 #top-nav {
@@ -255,7 +264,6 @@ textarea {
           color: #333;
         }
         &.active {
-          transform: scale(1.2);
           background: #fff;
         }
         .count {
@@ -283,6 +291,24 @@ textarea {
           padding: 0;
           margin: 0;
           border: 0;
+        }
+      }
+      .project-meta {
+        .links {
+          a {
+            float: left;
+            font-size: 1.5em;
+            border: 0;
+            margin: 3rem 1rem 0 0;
+            color: #666;
+            line-height: 30px;
+            &.fa-link {
+              font-size: 1.2em;
+            }
+            &:hover {
+              color: #ccc;
+            }
+          }
         }
       }
       .gh-chart {
@@ -398,6 +424,7 @@ article.project {
     margin-right: 5%;
   }
   .actions {
+    margin: 0 0 2rem;
     a {
       display: inline-block;
       font-size: 12px;

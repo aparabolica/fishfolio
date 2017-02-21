@@ -11,6 +11,7 @@ html(ng-controller="SiteCtrl")
     link(href='https://fonts.googleapis.com/css?family=Roboto+Mono:400,100,300,500,700' rel='stylesheet' type='text/css')
     link(href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css')
     link(href='https://fonts.googleapis.com/css?family=Share+Tech+Mono' rel='stylesheet' type='text/css')
+    link(href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css")
     link(rel="stylesheet" href="static/bootstrap/dist/css/bootstrap.min.css")
     link(rel="stylesheet" href="static/fontawesome/css/font-awesome.min.css")
     link(rel="stylesheet" href="static/skeleton/css/normalize.css")
@@ -40,7 +41,7 @@ html(ng-controller="SiteCtrl")
         footer#colophon
           block colophon
           a.credit(href="http://github.com/miguelpeixe/fishfolio" rel="external" target="_blank" title="Fork me on GitHub") fishfolio
-    
+
     nav#top-nav
       .lang-nav
         a(ng-repeat="l in langs" href="javascript:void(0);" ng-click="setLang(l)" ng-class="{active: lang == l}") {{l}}
@@ -51,12 +52,12 @@ html(ng-controller="SiteCtrl")
 
     script(type="text/javascript" src="static/underscore/underscore-min.js")
     script(type="text/javascript" src="static/jquery/dist/jquery.min.js")
-    
+
     script(type="text/javascript" src="static/firebase/firebase.js")
-    
+
     script(type="text/javascript" src="static/highcharts/highcharts.src.js")
     script(type="text/javascript" src="static/highcharts/highcharts-more.src.js")
-    
+
     script(type="text/javascript" src="static/angular/angular.min.js")
     script(type="text/javascript" src="static/ui-router/release/angular-ui-router.min.js")
     script(type="text/javascript" src="static/angular-cookies/angular-cookies.min.js")
@@ -64,13 +65,13 @@ html(ng-controller="SiteCtrl")
     script(type="text/javascript" src="static/ng-file-upload/ng-file-upload.min.js")
     script(type="text/javascript" src="static/ng-dialog/js/ngDialog.min.js")
     script(type="text/javascript" src="static/angularfire/dist/angularfire.min.js")
-    
+
     script(type="text/javascript" src="static/textAngular/dist/textAngular-rangy.min.js")
     script(type="text/javascript" src="static/textAngular/dist/textAngular-sanitize.min.js")
     script(type="text/javascript" src="static/textAngular/dist/textAngularSetup.js")
     script(type="text/javascript" src="static/textAngular/dist/textAngular.min.js")
-  
+
     script(type="text/javascript" src="config.js")
     script(type="text/javascript" src="app.js")
-    
+
     block foot
