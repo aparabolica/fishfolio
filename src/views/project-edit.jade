@@ -1,4 +1,4 @@
-h2 
+h2
   span(ng-show="project.$id") Editing project
   span(ng-hide="project.$id") New project
 form(ng-submit="saveProject(project)")
@@ -8,14 +8,16 @@ form(ng-submit="saveProject(project)")
   input#name(type="text" ng-model="project.name[lang]" placeholder="Name")
   input#url(type="text" ng-model="project.url" placeholder="URL")
   input#github(type="text" ng-model="project.github" placeholder=":owner/:repo")
+  input#facebook(type="text" ng-model="project.facebook" placeholder="Facebook url")
+  input#twitter(type="text" ng-model="project.twitter" placeholder="Twitter handle")
   input#tags(type="text" ng-model="project.tags[lang]" placeholder="Project tags (comma separated)")
   input#techs(type="text" ng-model="project.techs[lang]" placeholder="Technologies (comma separated)")
   textarea#description(ng-model="project.description[lang]" placeholder="Description")
   .dropbox(ngf-drop ngf-select ngf-multiple="true" ngf-drag-over-class="'dragover'" ng-model="projectMedia.screenshots" ng-disabled="uploading") Drag files here or click to select
   .checkbox-field
-    input#mobile(type="checkbox" ng-model="project.mobile") 
+    input#mobile(type="checkbox" ng-model="project.mobile")
     label(for="mobile") Show mobile version
-  h3 
+  h3
     label(for="long_description") Long description
   text-angular#long_description(ng-model="project.long_description[lang]")
   input(type="submit" value="Submit")

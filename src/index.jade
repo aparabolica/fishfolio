@@ -67,6 +67,8 @@ block body
               span(ng-repeat="tech in (project.techs | translate | commaSplit)") {{tech}}
             .links
               a.fa.fa-link(href="{{project.url}}" ng-show="project.url" target="_blank" rel="external")
-                a.fa.fa-github(href="http://github.com/{{project.github}}" ng-show="project.github" target="_blank" rel="external")
+              a.fa.fa-github(href="http://github.com/{{project.github}}" ng-show="project.github" target="_blank" rel="external")
+              a.fa.fa-facebook(href="{{project.facebook}}" ng-show="project.facebook" target="_blank" rel="external")
+              a.fa.fa-twitter(href="http://twitter.com/{{project.twitter}}" ng-show="project.twitter" target="_blank" rel="external")
         .six.columns
           p.description {{project.description | translate}}
