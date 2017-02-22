@@ -8,12 +8,13 @@
       '$firebaseArray',
       '$firebaseObject',
       '$firebaseAuth',
+      '$firebaseStorage',
       'FFService',
       'StorageService',
       'ngDialog',
       '$http',
       'Lang',
-      function($scope, $state, $firebaseArray, $firebaseObject, $firebaseAuth, FF, Storage, ngDialog, $http, Lang) {
+      function($scope, $state, $firebaseArray, $firebaseObject, $firebaseAuth, $firebaseStorage, FF, Storage, ngDialog, $http, Lang) {
 
         var ref = firebase.database().ref();
         $scope.authObj = $firebaseAuth();
@@ -181,12 +182,6 @@
             scope: $scope
           });
         };
-
-        $scope.getScreenshots = function(project) {
-          var screenshots = firebase.storage().ref('screenshots/' + project.$id);
-          console.log($firebaseArray(screenshots));
-          return $firebaseArray(screenshots);
-        }
 
         $scope.saveProject = function(project, cb) {
           projectTranslatableFields.forEach(function(key) {

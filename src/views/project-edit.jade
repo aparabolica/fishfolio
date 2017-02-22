@@ -7,6 +7,7 @@ form(ng-submit="saveProject(project)")
     a(ng-repeat="l in langs" href="javascript:void(0);" ng-click="formLang(l)" ng-class="{active: lang == l}") {{l}}
   input#name(type="text" ng-model="project.name[lang]" placeholder="Name")
   input#url(type="text" ng-model="project.url" placeholder="URL")
+  input#year(type="text" ng-model="project.launch_year" placeholder="Year of launch")
   input#github(type="text" ng-model="project.github" placeholder=":owner/:repo")
   input#facebook(type="text" ng-model="project.facebook" placeholder="Facebook url")
   input#twitter(type="text" ng-model="project.twitter" placeholder="Twitter handle")
