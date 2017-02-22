@@ -132,6 +132,10 @@
                 enabled: scope.tooltip,
                 followPointer: true,
                 backgroundColor: scope.backgroundColor || null,
+                formatter: function() {
+                  console.log(this);
+                  return '<span class="gh-tooltip"><span class="label"><b>Recent code activity on GitHub</b></span><br/><span class="date">' + moment(this.key).format('L') + '</span> - <span class="total">' + this.y + ' commits</span></span>';
+                },
                 borderRadius: 0,
                 shadow: false,
                 style: {

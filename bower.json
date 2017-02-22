@@ -26,6 +26,7 @@
     "textAngular": "~1.5.0",
     "highcharts": "~4.2.3",
     "angular-cookies": "^1.6.2",
-    "ng-file-upload": "^12.2.13"
+    "ng-file-upload": "^12.2.13",
+    "moment": "^2.17.1"
   }
 }

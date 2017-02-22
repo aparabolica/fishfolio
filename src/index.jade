@@ -47,19 +47,31 @@ block body
                   .tag-content
                     a(href="javascript:void(0);" ng-repeat="tech in techs | orderBy:'count':true" ng-click="filterProject('techs', tech.name)" ng-class="{active: filtered.techs == tech.name}") {{tech.name | translate}}
                       span.count {{tech.count}}
-    article.project(ng-repeat="project in projects | byCommaTags:filtered.techs:'techs' | byCommaTags:filtered.tags:'tags' | orderBy:latestCommit:true" ng-hide="project.$id == viewingProject")
+            .container.full
+              .six.columns
+                .search-input
+                  span.fa.fa-search
+                  input#search(type="text" ng-model="search" placeholder="Search projects...")
+              .six.columns
+                .sort-input
+                  span.fa.fa-sort
+                  select(ng-model="sort")
+                    option(value="year") Launch year
+                    option(value="github") Recent activity
+                    option(value="name") Name
+    article.project(ng-repeat="project in projects | filter:search | byCommaTags:filtered.techs:'techs' | byCommaTags:filtered.tags:'tags' | orderBy:latestCommit:true" ng-hide="project.$id == viewingProject")
       .container
         .twelve.columns
           .actions(ng-show="user")
             a(href="javascript:void(0);" ng-click="edit(project)" title="Edit") E
             a(href="javascript:void(0);" ng-click="remove(project)" title="Remove") R
           h3
-            span.year(ng-show="project.launch_year") {{project.launch_year}}
             a(ui-sref="project({projectId: project['$id']})") {{project.name | translate}}
+            span.year(ng-show="project.launch_year") ({{project.launch_year}})
       .container
         .four.columns
           .project-meta.container.full
-            gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="false" ng-show="project.github && latestCommit(project) !== -1")
+            gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="true" ng-show="project.github && latestCommit(project) !== -1" background-color="'#333333'")
             p.tags(ng-show="project.tags")
               span.fa.fa-tag
               span(ng-repeat="tag in (project.tags | translate | commaSplit)") {{tag}}
