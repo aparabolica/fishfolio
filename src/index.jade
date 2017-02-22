@@ -54,6 +54,7 @@ block body
             a(href="javascript:void(0);" ng-click="edit(project)" title="Edit") E
             a(href="javascript:void(0);" ng-click="remove(project)" title="Remove") R
           h3
+            span.year(ng-show="project.launch_year") {{project.launch_year}}
             a(ui-sref="project({projectId: project['$id']})") {{project.name | translate}}
       .container
         .four.columns
