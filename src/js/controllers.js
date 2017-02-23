@@ -1,5 +1,4 @@
 function removeAccentMark(str) {
-
   var map = {
     a : /[\xE0-\xE6]/g,
     A : /[\xC0-\xC6]/g,
@@ -16,12 +15,10 @@ function removeAccentMark(str) {
     n : /\xF1/g,
     N : /\xD1/g,
   };
-
   for(var l in map ) {
     var exp = map[l];
     str = str.replace(exp, l);
   }
-
   return str;
 }
 
