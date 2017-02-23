@@ -82,10 +82,17 @@ block body
                   span(ng-show="filtered.tags") ,
                   = " " 
                   | {{filtered.techs}}
-                a.button(ng-click="resetFilters()") 
+                a.button(ng-click="resetFilters()"  href="javascript:void(0);") 
                   span(translate) Reset filters
                   span.fa.fa-close
-    article.project(ng-repeat="project in projects | filter:search | byCommaTags:filtered.techs:'techs' | byCommaTags:filtered.tags:'tags' | orderBy:projectSort(sort):reverse" ng-hide="project.$id == viewingProject")
+    article.project.not-found(ng-hide="filteredProjects.length")
+      .container
+        .twelve.columns
+          h2
+            span(translate) No projects found!
+            =" "
+            a(ng-click="resetFilters()" href="javascript:void(0);" translate) Try another search.
+    article.project(ng-repeat="project in filteredProjects = (projects | filter:search | byCommaTags:filtered.techs:'techs' | byCommaTags:filtered.tags:'tags') | orderBy:projectSort(sort):reverse" ng-hide="project.$id == viewingProject")
       .container
         .twelve.columns
           .actions(ng-show="user")
@@ -105,7 +112,7 @@ block body
               span.fa.fa-gear
               span(ng-repeat="tech in (project.techs | i18n | commaSplit)") {{tech}}
             .links
-              a.fa.fa-link(href="{{project.url}}" ng-show="project.url" target="_blank" rel="external")
+              a.fa.fa-home(href="{{project.url}}" ng-show="project.url" target="_blank" rel="external")
               a.fa.fa-github(href="http://github.com/{{project.github}}" ng-show="project.github" target="_blank" rel="external")
               a.fa.fa-facebook(href="{{project.facebook}}" ng-show="project.facebook" target="_blank" rel="external")
               a.fa.fa-twitter(href="http://twitter.com/{{project.twitter}}" ng-show="project.twitter" target="_blank" rel="external")

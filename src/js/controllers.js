@@ -88,6 +88,7 @@ function removeAccentMark(str) {
           }
         });
 
+        $scope.filteredProjects = [];
         $scope.filtered = {};
 
         $scope.filterProject = function(key, val) {

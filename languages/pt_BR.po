@@ -29,6 +29,10 @@ msgid "Logout"
 msgstr "Sair"
 
 #: dist/index.html:1
+msgid "No projects found!"
+msgstr "Nenhum projeto encontrado!"
+
+#: dist/index.html:1
 msgid "Ordering by"
 msgstr "Ordernado por"
 
@@ -59,6 +63,10 @@ msgstr "Configurações"
 #: dist/index.html:1
 msgid "Technologies"
 msgstr "Tecnologias"
+
+#: dist/index.html:1
+msgid "Try another search."
+msgstr "Tente outra busca."
 
 #: dist/views/project.html:1
 msgid "View all projects"
