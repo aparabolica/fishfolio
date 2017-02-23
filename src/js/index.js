@@ -13,7 +13,8 @@
 
   require('./translations');
 
-  app.config([
+  app
+  .config([
     '$stateProvider',
     '$urlRouterProvider',
     '$locationProvider',
@@ -38,6 +39,18 @@
         templateUrl: 'views/project.html'
       });
 
+    }
+  ])
+  .run([
+    '$rootScope',
+    function($rootScope) {
+      $rootScope.$on('$stateChangeSuccess', function(ev, toState, toParams, fromState) {
+        if((toState.name == 'project' || toState.name == 'home') && fromState.name) {
+          $('html,body').animate({
+            scrollTop: $('#projects').offset().top - 70
+          });
+        }
+      });
     }
   ]);
 

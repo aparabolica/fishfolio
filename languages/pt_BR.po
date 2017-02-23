@@ -60,6 +60,10 @@ msgstr "Configurações"
 msgid "Technologies"
 msgstr "Tecnologias"
 
+#: dist/views/project.html:1
+msgid "View all projects"
+msgstr "Ver todos os projetos"
+
 #: dist/index.html:1
 msgid "and"
 msgstr "e"

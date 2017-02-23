@@ -2,6 +2,10 @@ section#projects.single-project
   article.project
     .container
       .four.columns
+        a.back(ui-sref="home") 
+          span.fa.fa-angle-left
+          =" "
+          span(translate) View all projects
         h2 {{project.name | i18n}}
         p(ng-show="project.description") {{project.description | i18n}}
         .actions(ng-show="user")
