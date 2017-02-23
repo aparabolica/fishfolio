@@ -149,7 +149,7 @@ module.exports = function(grunt) {
   grunt.registerTask(
     'javascript',
     'Compile scripts.',
-    ['ngconstant', 'browserify', 'uglify']
+    ['ngconstant', 'nggettext_compile', 'browserify', 'uglify']
   );
 
   grunt.registerTask(
@@ -161,7 +161,7 @@ module.exports = function(grunt) {
   grunt.registerTask(
     'build',
     'Compiles everything.',
-    ['copy', 'javascript', 'views', 'nggettext_compile']
+    ['copy', 'javascript', 'views']
   );
 
   grunt.registerTask(

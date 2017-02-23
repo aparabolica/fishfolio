@@ -54,7 +54,7 @@ block body
           .six.columns
             .sort-input
               span.fa.fa-sort
-              span.sort-label(translate) Ordering by: 
+              span.sort-label(translate) Ordering by
               select(ng-model="sort")
                 option(value="year" translate) latest projects
                 option(value="github" translate) recent activity
@@ -81,7 +81,7 @@ block body
                 span.term(ng-show="filtered.techs")
                   span(ng-show="filtered.tags") ,
                   = " " 
-                  {{filtered.techs}}
+                  | {{filtered.techs}}
                 a.button(ng-click="resetFilters()") 
                   span(translate) Reset filters
                   span.fa.fa-close

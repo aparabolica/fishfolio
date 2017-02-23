@@ -29,8 +29,8 @@ msgid "Logout"
 msgstr "Sair"
 
 #: dist/index.html:1
-msgid "Ordering by:"
-msgstr "Ordenado por:"
+msgid "Ordering by"
+msgstr "Ordernado por"
 
 #: dist/index.html:1
 msgid "Project tags"
@@ -83,6 +83,9 @@ msgstr "atividade recente"
 #: dist/index.html:1
 msgid "tagged"
 msgstr "marcados como"
+
+#~ msgid "Ordering by:"
+#~ msgstr "Ordenado por:"
 
 #~ msgid "Recent activity on GitHub"
 #~ msgstr "Atividade recente no GitHub"
