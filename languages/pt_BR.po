@@ -40,13 +40,9 @@ msgstr "Tags de projetos"
 msgid "Projects"
 msgstr "Projetos"
 
-#: dist/views/project.html:1
-msgid "Recent activity on GitHub"
-msgstr "Atividade recente no GitHub"
-
-#: dist/index.html:1
-msgid "Recent code activity on GitHub"
-msgstr "Atividade recente no GitHub"
+#: dist/index.html:1 dist/views/project.html:1
+msgid "Recent activity in code repository"
+msgstr "Atividade recente no repositório de código"
 
 #: dist/index.html:1
 msgid "Reset filters"
@@ -87,3 +83,9 @@ msgstr "atividade recente"
 #: dist/index.html:1
 msgid "tagged"
 msgstr "marcados como"
+
+#~ msgid "Recent activity on GitHub"
+#~ msgstr "Atividade recente no GitHub"
+
+#~ msgid "Recent code activity on GitHub"
+#~ msgstr "Atividade recente no GitHub"
