@@ -10,7 +10,7 @@
             return input;
           } else {
             return _.filter(input, function(item) {
-              var tags = $filter('translate')(item[key]);
+              var tags = $filter('i18n')(item[key]);
               return _.find(tags.split(','), function(t) {
                 return t.trim() == tag;
               });
