@@ -86,4 +86,4 @@ msgstr "atividade recente"
 
 #: dist/index.html:1
 msgid "tagged"
-msgstr "marcado"
+msgstr "marcados como"

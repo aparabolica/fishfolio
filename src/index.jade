@@ -65,6 +65,7 @@ block body
               p(ng-show="!search && !filtered.techs && !filtered.tags" translate) Currently viewing all projects.
               p(ng-show="search || filtered.techs || filtered.tags")
                 span(translate) Currently viewing projects 
+                =" "
                 span(ng-show="search")
                   span(translate) containing
                   =" "
