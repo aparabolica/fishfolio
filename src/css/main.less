@@ -208,8 +208,8 @@ textarea {
 }
 
 #welcome {
-  padding: 0 0 60px;
-  margin: 0 0 60px;
+  padding: 0 0 4rem;
+  margin: 0 0 4rem;
   p {
     margin: 0;
   }
@@ -252,7 +252,7 @@ textarea {
       letter-spacing: 1px;
     }
     nav {
-      padding: 40px 0 20px;
+      padding: 2rem 0 1rem;
       .nav-item {
         margin-bottom: 20px;
       }
@@ -321,25 +321,55 @@ textarea {
           position: absolute;
           z-index: 1;
           color: #999;
-          left: 1.7rem;
+          left: 0;
           top: 1rem;
         }
+        .sort-label {
+          display: inline-block;
+          padding-left: 3rem;
+          margin-right: 1rem;
+          color: #666;
+          font-weight: normal;
+        }
         select {
-          padding-left: 3.5rem;
           color: #666;
           font-size: .9em;
           background: transparent;
           border-radius: 0;
-          border-color: #ddd;
+          border-color: transparent;
           &:focus {
-            border-color: #ccc;
+            border-color: transparent;
           }
         }
-        .reverse {
-          display: inline-block;
-          color: #666;
-          margin: 0 1rem;
-          font-size: 1.2em;
+      }
+      .currently-viewing {
+        margin-top: 4rem;
+        margin-bottom: -1rem;
+        background: @main;
+        padding: .5em 0;
+        p {
+          margin: 0;
+          .term {
+            text-transform: lowercase;
+            background: lighten(@main, 2%);
+            padding: .4rem .7rem;
+            font-size: .9em;
+          }
+          .button {
+            float: right;
+            border: 0;
+            margin: 0;
+            padding: .5rem .7rem;
+            background: darken(@main, 5%);
+            line-height: 1;
+            display: inline-block;
+            color: rgba(255,255,255,0.5);
+            font-weight: 400;
+            .fa {
+              color: #fff;
+              margin-left: .6rem;
+            }
+          }
         }
       }
     }

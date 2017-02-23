@@ -28,37 +28,58 @@ block body
           .header-content
             h2(ng-show="user") Projects
             button(ng-show="user" ng-click="new()" title="Add new project") +
-        .twelve.columns
-          nav.header-nav
-            .container.full
-              .six.columns
-                .tags.nav-item(ng-show="tags")
-                  h3
-                    span.fa.fa-tag
-                    | Project tags
-                  .tag-content
-                    a(href="javascript:void(0);" ng-repeat="tag in tags | orderBy:'count':true" ng-click="filterProject('tags', tag.name)" ng-class="{active: filtered.tags == tag.name}") {{tag.name | translate}}
-                      span.count {{tag.count}}
-              .six.columns
-                .techs.nav-item(ng-show="techs")
-                  h3
-                    span.fa.fa-gear
-                    | Technologies
-                  .tag-content
-                    a(href="javascript:void(0);" ng-repeat="tech in techs | orderBy:'count':true" ng-click="filterProject('techs', tech.name)" ng-class="{active: filtered.techs == tech.name}") {{tech.name | translate}}
-                      span.count {{tech.count}}
-            .container.full
-              .six.columns
-                .search-input
-                  span.fa.fa-search
-                  input#search(type="text" ng-model="search" placeholder="Search projects...")
-              .six.columns
-                .sort-input
-                  span.fa.fa-sort
-                  select(ng-model="sort")
-                    option(value="year") Latest projects
-                    option(value="github") Recent activity
-                    option(value="name") Name
+      nav.header-nav
+        .container
+          .six.columns
+            .tags.nav-item(ng-show="tags")
+              h3
+                span.fa.fa-tag
+                | Project tags
+              .tag-content
+                a(href="javascript:void(0);" ng-repeat="tag in tags | orderBy:'count':true" ng-click="filterProject('tags', tag.name)" ng-class="{active: filtered.tags == tag.name}") {{tag.name | translate}}
+                  span.count {{tag.count}}
+          .six.columns
+            .techs.nav-item(ng-show="techs")
+              h3
+                span.fa.fa-gear
+                | Technologies
+              .tag-content
+                a(href="javascript:void(0);" ng-repeat="tech in techs | orderBy:'count':true" ng-click="filterProject('techs', tech.name)" ng-class="{active: filtered.techs == tech.name}") {{tech.name | translate}}
+                  span.count {{tech.count}}
+        .container
+          .six.columns
+            .search-input
+              span.fa.fa-search
+              input#search(type="text" ng-model="search" placeholder="Search projects...")
+          .six.columns
+            .sort-input
+              span.fa.fa-sort
+              span.sort-label Ordering by: 
+              select(ng-model="sort")
+                option(value="year") latest projects
+                option(value="github") recent activity
+                option(value="name") name
+        .currently-viewing
+          .container
+            .twelve.columns
+              p(ng-show="!search && !filtered.techs && !filtered.tags") Currently viewing all projects.
+              p(ng-show="search || filtered.techs || filtered.tags") Currently viewing projects 
+                span(ng-show="search") containing
+                  =" "
+                  span.term {{search}}
+                span(ng-show="search && (filtered.techs || filtered.tags)")
+                  =" "
+                  | and
+                  =" "
+                span(ng-show="filtered.tags || filtered.techs") tagged
+                  =" "
+                span.term(ng-show="filtered.tags") {{filtered.tags}}
+                span.term(ng-show="filtered.techs")
+                  span(ng-show="filtered.tags") ,
+                  = " " 
+                  {{filtered.techs}}
+                a.button(ng-click="resetFilters()") Reset
+                  span.fa.fa-close
     article.project(ng-repeat="project in projects | filter:search | byCommaTags:filtered.techs:'techs' | byCommaTags:filtered.tags:'tags' | orderBy:projectSort(sort):reverse" ng-hide="project.$id == viewingProject")
       .container
         .twelve.columns

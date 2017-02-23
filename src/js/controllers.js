@@ -102,6 +102,12 @@
           }
         }
 
+        $scope.resetFilters = function() {
+          $scope.filtered = {};
+          $scope.search = '';
+          $scope.sort = 'year';
+        }
+
         $scope.totalCommits = function(project) {
           var total;
           if($scope.ghData[project.$id])
