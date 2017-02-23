@@ -535,19 +535,50 @@ function validStyles(styleAttr){
 					|| value === 'justify'
 				)
 			||
-                key === 'text-decoration' && (
-                    value === 'underline'
-                    || value === 'line-through'
-                )
-            || key === 'font-weight' && (
-                    value === 'bold'
-                )
-            ||
-				key === 'float' && (
-					value === 'left'
-					|| value === 'right'
-					|| value === 'none'
-				)
+        key === 'text-decoration' && (
+            value === 'underline'
+            || value === 'line-through'
+        )
+      || 
+        key === 'font-weight' && (
+            value === 'bold'
+        )
+      ||
+        key === 'font-style' && (
+          value === 'italic'
+        )
+      ||
+        key === 'float' && (
+            value === 'left'
+            || value === 'right'
+            || value === 'none'
+        )
+      ||
+        key === 'vertical-align' && (
+            value === 'baseline'
+            || value === 'sub'
+            || value === 'super'
+            || value === 'test-top'
+            || value === 'text-bottom'
+            || value === 'middle'
+            || value === 'top'
+            || value === 'bottom'
+            || value.match(/[0-9]*(px|em)/)
+            || value.match(/[0-9]+?%/)
+        )
+      ||
+        key === 'font-size' && (
+            value === 'xx-small'
+            || value === 'x-small'
+            || value === 'small'
+            || value === 'medium'
+            || value === 'large'
+            || value === 'x-large'
+            || value === 'xx-large'
+            || value === 'larger'
+            || value === 'smaller'
+            || value.match(/[0-9]*\.?[0-9]*(px|em|rem|mm|q|cm|in|pt|pc|%)/)
+                               )
 			||
 				(key === 'width' || key === 'height') && (
 					value.match(/[0-9\.]*(px|em|rem|%)/)
