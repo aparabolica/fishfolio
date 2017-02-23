@@ -78,7 +78,7 @@ block body
                   span(ng-show="filtered.tags") ,
                   = " " 
                   {{filtered.techs}}
-                a.button(ng-click="resetFilters()") Reset
+                a.button(ng-click="resetFilters()") Reset filters
                   span.fa.fa-close
     article.project(ng-repeat="project in projects | filter:search | byCommaTags:filtered.techs:'techs' | byCommaTags:filtered.tags:'tags' | orderBy:projectSort(sort):reverse" ng-hide="project.$id == viewingProject")
       .container

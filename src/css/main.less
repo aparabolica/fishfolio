@@ -360,7 +360,7 @@ textarea {
             float: right;
             border: 0;
             margin: 0;
-            padding: .3rem .5rem;
+            padding: .4rem .5rem;
             background: #fff;
             line-height: 1;
             display: inline-block;
@@ -461,14 +461,57 @@ textarea {
     article.project {
       padding: 40px 0;
       h2 {
-        margin: 0 0 20px;
+        font-size: 2.7em;
+        margin: 0 0 2rem;
+      }
+      h3 {
+        font-size: 1.2em;
+        color: #666;
       }
       p {
-        margin: 0 0 20px;
+        margin: 0 0 2rem;
       }
       .actions {
         a {
-          margin-right: 10px;
+          margin-right: 1rem;
+        }
+      }
+
+      .links {
+        margin: 2rem .5rem;
+        padding-top: 1rem;
+        border-top: 1px solid #3c3c3c;
+        a {
+          display: inline-block;
+          font-size: 2em;
+          border: 0;
+          margin: 0 1.5rem 0 0;
+          color: #999;
+          line-height: 30px;
+          &.fa-link {
+            font-size: 1.2em;
+          }
+          &:hover {
+            color: #ccc;
+          }
+        }
+      }
+      p.tags {
+        color: #777;
+        margin: 0 0 .5rem;
+        font-size: .8em;
+        line-height: 1;
+        span {
+          display: inline-block;
+          text-transform: lowercase;
+          margin: .3rem;
+          border-radius: 8px;
+          background: #363636;
+          padding: .4rem .6rem;
+          &.fa {
+            background: transparent;
+            padding: 0;
+          }
         }
       }
       .gh-chart {

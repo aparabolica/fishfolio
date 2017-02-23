@@ -7,6 +7,17 @@ section#projects.single-project
         .actions(ng-show="user")
           a(href="javascript:void(0);" ng-click="edit(project)" title="Edit") E
           a(href="javascript:void(0);" ng-click="remove(project)" title="Remove") R
+        p.tags(ng-show="project.tags")
+          span.fa.fa-tag
+          span(ng-repeat="tag in (project.tags | translate | commaSplit)") {{tag}}
+        p.tags(ng-show="project.techs")
+          span.fa.fa-gear
+          span(ng-repeat="tech in (project.techs | translate | commaSplit)") {{tech}}
+        .links
+          a.fa.fa-link(href="{{project.url}}" ng-show="project.url" target="_blank" rel="external")
+          a.fa.fa-github(href="http://github.com/{{project.github}}" ng-show="project.github" target="_blank" rel="external")
+          a.fa.fa-facebook(href="{{project.facebook}}" ng-show="project.facebook" target="_blank" rel="external")
+          a.fa.fa-twitter(href="http://twitter.com/{{project.twitter}}" ng-show="project.twitter" target="_blank" rel="external")
       .eight.columns
         web-device.desktop-device(src="project.url | translate" width="1366" height="800")
           .details
@@ -16,7 +27,7 @@ section#projects.single-project
     .gh(ng-show="project.github && latestCommit(project) !== -1")
       .container
         .twelve.columns
-          h2 Recent activity on GitHub
+          h3 Recent activity on GitHub
           #gh-chart(ng-show="project.github")
             gh-chart(data="commitActivity" line-color="'#999'" tooltip="true" full="true")
     .long-description(ng-show="project.long_description" ng-bind-html="project.long_description | translate | toHtml")
