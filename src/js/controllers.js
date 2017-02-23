@@ -102,6 +102,21 @@
           }
         }
 
+        $scope.totalCommits = function(project) {
+          var total;
+          if($scope.ghData[project.$id])
+            total = $scope.ghData[project.$id].totalCommits;
+          return total;
+        }
+        $scope.latestCommit = function(project) {
+          var total;
+          if($scope.ghData[project.$id])
+            total = $scope.ghData[project.$id].latestCommit;
+          if(!total)
+            total = -1;
+          return total;
+        }
+
         $scope.projects.$loaded(function(projects) {
           projects.forEach(function(project) {
             if(project.github) {
