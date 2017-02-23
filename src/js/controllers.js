@@ -5,6 +5,7 @@
     app.controller('SiteCtrl', [
       '$scope',
       '$state',
+      '$filter',
       '$firebaseArray',
       '$firebaseObject',
       '$firebaseAuth',
@@ -14,7 +15,7 @@
       'ngDialog',
       '$http',
       'Lang',
-      function($scope, $state, $firebaseArray, $firebaseObject, $firebaseAuth, $firebaseStorage, FF, Storage, ngDialog, $http, Lang) {
+      function($scope, $state, $filter, $firebaseArray, $firebaseObject, $firebaseAuth, $firebaseStorage, FF, Storage, ngDialog, $http, Lang) {
 
         var ref = firebase.database().ref();
         $scope.authObj = $firebaseAuth();
@@ -77,22 +78,31 @@
 
         $scope.ghData = {};
 
-        $scope.totalCommits = function(project) {
-          var total;
-          if($scope.ghData[project.$id])
-            total = $scope.ghData[project.$id].totalCommits;
-          return total;
-        }
-        $scope.latestCommit = function(project) {
-          var total;
-          if($scope.ghData[project.$id])
-            total = $scope.ghData[project.$id].latestCommit;
-          if(!total)
-            total = -1;
-          return total;
+        $scope.sort = 'year';
+        $scope.reverse = false;
+
+        $scope.projectSort = function(type) {
+          return function(project) {
+            switch (type) {
+              case 'github':
+                var total;
+                if($scope.ghData[project.$id])
+                  total = $scope.ghData[project.$id].latestCommit;
+                if(!total)
+                  total = -1;
+                return -total;
+                break;
+              case 'name':
+                return $filter('translate')(project.name);
+                break;
+              case 'year':
+                return -project.launch_year;
+                break;
+            }
+          }
         }
 
-        $scope.projects.$loaded().then(function(projects) {
+        $scope.projects.$loaded(function(projects) {
           projects.forEach(function(project) {
             if(project.github) {
               $scope.ghData[project.$id] = {};
@@ -118,13 +128,13 @@
         var about = firebase.database().ref().child('about');
         $scope.about = $firebaseObject(about);
 
-        $scope.about.$loaded().then(function() {
+        $scope.about.$loaded(function() {
           angular.element('body').css({opacity:1});
         });
 
         var aboutTranslatableFields = ['title', 'tagline', 'description'];
         $scope.settings = function() {
-          $scope.about.$loaded().then(function(about) {
+          $scope.about.$loaded(function(about) {
             about.$translatedKeys = [];
             for(var key in about) {
               if(aboutTranslatableFields.indexOf(key) != -1) {
@@ -168,7 +178,7 @@
           } else {
             $scope.project = project;
           }
-          $scope.project.$loaded().then(function(project) {
+          $scope.project.$loaded(function(project) {
             project.$translatedKeys = [];
             for(var key in project) {
               if(projectTranslatableFields.indexOf(key) != -1) {
@@ -271,7 +281,7 @@
         var project = firebase.database().ref().child('projects').child($stateParams.projectId);
         $scope.project = $firebaseObject(project);
 
-        $scope.project.$loaded().then(function(project) {
+        $scope.project.$loaded(function(project) {
           if(project.github) {
             $http.get('https://api.github.com/repos/'+ project.github + '/stats/commit_activity').then(function(data) {
               $scope.commitActivity = data.data;

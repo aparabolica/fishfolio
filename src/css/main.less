@@ -1,3 +1,7 @@
+@main: #ff5b3d;
+@secondary: #1b2a47;
+@gray: #333333;
+
 html,
 body {
   font-family: 'Roboto Mono', monospace;
@@ -32,8 +36,8 @@ a {
   &:hover,
   &:active,
   &:focus {
-    color: rgb(255, 153, 0);
-    border-color: rgb(255, 153, 0);
+    color: @main;
+    border-color: @main;
     text-decoration: none;
   }
 }
@@ -222,7 +226,7 @@ textarea {
 }
 
 #projects {
-  background: #333;
+  background: @gray;
   color: #f0f0f0;
   a {
     color: #f0f0f0;
@@ -273,7 +277,12 @@ textarea {
           color: #333;
         }
         &.active {
-          background: #fff;
+          background: @main;
+          color: #fff;
+          .count {
+            background: darken(@main, 5%);
+            color: #fff;
+          }
         }
         .count {
           display: inline-block;
@@ -308,7 +317,7 @@ textarea {
       }
       .sort-input {
         position: relative;
-        .fa {
+        .fa-sort {
           position: absolute;
           z-index: 1;
           color: #999;
@@ -325,6 +334,12 @@ textarea {
           &:focus {
             border-color: #ccc;
           }
+        }
+        .reverse {
+          display: inline-block;
+          color: #666;
+          margin: 0 1rem;
+          font-size: 1.2em;
         }
       }
     }

@@ -56,10 +56,10 @@ block body
                 .sort-input
                   span.fa.fa-sort
                   select(ng-model="sort")
-                    option(value="year") Launch year
+                    option(value="year") Latest projects
                     option(value="github") Recent activity
                     option(value="name") Name
-    article.project(ng-repeat="project in projects | filter:search | byCommaTags:filtered.techs:'techs' | byCommaTags:filtered.tags:'tags' | orderBy:latestCommit:true" ng-hide="project.$id == viewingProject")
+    article.project(ng-repeat="project in projects | filter:search | byCommaTags:filtered.techs:'techs' | byCommaTags:filtered.tags:'tags' | orderBy:projectSort(sort):reverse" ng-hide="project.$id == viewingProject")
       .container
         .twelve.columns
           .actions(ng-show="user")
