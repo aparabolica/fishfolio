@@ -64,6 +64,23 @@ module.exports = function(grunt) {
         }]
       }
     },
+    nggettext_extract: {
+      pot: {
+        files: {
+          'languages/template.pot': ['dist/**/*.html']
+        }
+      }
+    },
+    nggettext_compile: {
+      all: {
+        options: {
+          module: 'fishfolio'
+        },
+        files: {
+          'src/js/translations.js': ['languages/*.po']
+        }
+      }
+    },
     copy: {
       all: {
         files: [
@@ -96,11 +113,15 @@ module.exports = function(grunt) {
       },
       jade: {
         files: 'src/**/*.jade',
-        tasks: ['jade']
+        tasks: ['jade', 'nggettext_extract']
       },
       scripts: {
         files: 'src/js/**/*.js',
-        tasks: ['browserify']
+        tasks: ['browserify', 'nggettext_extract']
+      },
+      localize: {
+        files: 'languages/*.po',
+        tasks: ['nggettext_compile']
       },
       copy: {
         files: ['src/**', '!src/**/*.less', '!src/**/*.jade', '!src/**/*.js'],
@@ -118,6 +139,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-copy');
   grunt.loadNpmTasks('grunt-contrib-less');
   grunt.loadNpmTasks('grunt-contrib-jade');
+  grunt.loadNpmTasks('grunt-angular-gettext');
   grunt.loadNpmTasks('grunt-browserify');
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-watch');
@@ -133,13 +155,13 @@ module.exports = function(grunt) {
   grunt.registerTask(
     'views',
     'Compile views.',
-    ['jade', 'less']
+    ['jade', 'less', 'nggettext_extract']
   );
 
   grunt.registerTask(
     'build',
     'Compiles everything.',
-    ['copy', 'javascript', 'views']
+    ['copy', 'javascript', 'views', 'nggettext_compile']
   );
 
   grunt.registerTask(

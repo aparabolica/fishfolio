@@ -92,6 +92,7 @@
             width: '=',
             height: '=',
             tooltip: '=',
+            tooltipLabel: '=',
             full: '='
           },
           replace: true,
@@ -133,7 +134,11 @@
                 followPointer: true,
                 backgroundColor: scope.backgroundColor || null,
                 formatter: function() {
-                  return '<span class="gh-tooltip"><span class="label"><b>Recent code activity on GitHub</b></span><br/><span class="date">' + moment(this.key).format('L') + '</span> - <span class="total">' + this.y + ' commits</span></span>';
+                  var label = '';
+                  if(scope.tooltipLabel) {
+                    label = '<span class="label"><b>' + scope.tooltipLabel + '</b></span><br/>';
+                  }
+                  return '<span class="gh-tooltip">' + label + '<span class="date">' + moment(this.key).format('L') + '</span> - <span class="total">' + this.y + ' commits</span></span>';
                 },
                 borderRadius: 0,
                 shadow: false,

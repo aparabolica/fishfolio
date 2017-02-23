@@ -2,6 +2,7 @@
 
   var app = angular.module('fishfolio', [
     'fishfolio.config',
+    'gettext',
     'ngCookies',
     'ngFileUpload',
     'ui.router',
@@ -9,6 +10,8 @@
     'firebase',
     'textAngular'
   ]);
+
+  require('./translations');
 
   app.config([
     '$stateProvider',
@@ -37,6 +40,7 @@
 
     }
   ]);
+
 
   require('./i18n')(app);
   require('./services')(app);

@@ -120,7 +120,7 @@ function removeAccentMark(str) {
                 return -total;
                 break;
               case 'name':
-                return removeAccentMark($filter('translate')(project.name));
+                return removeAccentMark($filter('i18n')(project.name));
                 break;
               case 'year':
                 return -project.launch_year;

@@ -1,0 +1,84 @@
+msgid ""
+msgstr ""
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Project-Id-Version: \n"
+
+#: dist/index.html:1
+msgid "Currently viewing all projects."
+msgstr ""
+
+#: dist/index.html:1
+msgid "Currently viewing projects"
+msgstr ""
+
+#: dist/index.html:1
+#: dist/views/layouts/site.html:1
+msgid "Login"
+msgstr ""
+
+#: dist/index.html:1
+#: dist/views/layouts/site.html:1
+msgid "Logout"
+msgstr ""
+
+#: dist/index.html:1
+msgid "Ordering by:"
+msgstr ""
+
+#: dist/index.html:1
+msgid "Project tags"
+msgstr ""
+
+#: dist/index.html:1
+msgid "Projects"
+msgstr ""
+
+#: dist/views/project.html:1
+msgid "Recent activity on GitHub"
+msgstr ""
+
+#: dist/index.html:1
+msgid "Recent code activity on GitHub"
+msgstr ""
+
+#: dist/index.html:1
+msgid "Reset filters"
+msgstr ""
+
+#: dist/index.html:1
+msgid "Search projects..."
+msgstr ""
+
+#: dist/index.html:1
+#: dist/views/layouts/site.html:1
+msgid "Settings"
+msgstr ""
+
+#: dist/index.html:1
+msgid "Technologies"
+msgstr ""
+
+#: dist/index.html:1
+msgid "and"
+msgstr ""
+
+#: dist/index.html:1
+msgid "containing"
+msgstr ""
+
+#: dist/index.html:1
+msgid "latest projects"
+msgstr ""
+
+#: dist/index.html:1
+msgid "name"
+msgstr ""
+
+#: dist/index.html:1
+msgid "recent activity"
+msgstr ""
+
+#: dist/index.html:1
+msgid "tagged"
+msgstr ""

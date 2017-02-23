@@ -15,7 +15,7 @@
               var paramVals = [];
               if(item[parameter]) {
                 if(split) {
-                  var itemVal = $filter('translate')(item[parameter]);
+                  var itemVal = $filter('i18n')(item[parameter]);
                   if(itemVal) {
                     itemVal.split(split).forEach(function(val) {
                       paramVals.push(val.trim());

@@ -7,12 +7,12 @@ block head
 
 block header-branding
   h1
-    a(ui-sref="home") {{about.title || 'Site title' | translate}}
-  p {{about.tagline || 'Tagline' | translate}}
+    a(ui-sref="home") {{about.title | i18n}}
+  p {{about.tagline | i18n}}
 
 block sections
   section#welcome
-    p {{about.description || 'Description' | translate}}
+    p {{about.description | i18n}}
     .social
       a.fa.fa-github(href="http://github.com/{{about.github}}" rel="external" target="_blank" ng-show="about.github")
       a.fa.fa-facebook(href="{{about.facebook}}" rel="external" target="_blank" ng-show="about.facebook")
@@ -26,59 +26,63 @@ block body
       .container
         .twelve.columns
           .header-content
-            h2(ng-show="user") Projects
-            button(ng-show="user" ng-click="new()" title="Add new project") +
+            h2(ng-show="user" translate) Projects
+            button(ng-show="user" ng-click="new()") +
       nav.header-nav
         .container
           .six.columns
             .tags.nav-item(ng-show="tags")
               h3
                 span.fa.fa-tag
-                | Project tags
+                span(translate) Project tags
               .tag-content
-                a(href="javascript:void(0);" ng-repeat="tag in tags | orderBy:'count':true" ng-click="filterProject('tags', tag.name)" ng-class="{active: filtered.tags == tag.name}") {{tag.name | translate}}
+                a(href="javascript:void(0);" ng-repeat="tag in tags | orderBy:'count':true" ng-click="filterProject('tags', tag.name)" ng-class="{active: filtered.tags == tag.name}") {{tag.name | i18n}}
                   span.count {{tag.count}}
           .six.columns
             .techs.nav-item(ng-show="techs")
               h3
                 span.fa.fa-gear
-                | Technologies
+                span(translate) Technologies
               .tag-content
-                a(href="javascript:void(0);" ng-repeat="tech in techs | orderBy:'count':true" ng-click="filterProject('techs', tech.name)" ng-class="{active: filtered.techs == tech.name}") {{tech.name | translate}}
+                a(href="javascript:void(0);" ng-repeat="tech in techs | orderBy:'count':true" ng-click="filterProject('techs', tech.name)" ng-class="{active: filtered.techs == tech.name}") {{tech.name | i18n}}
                   span.count {{tech.count}}
         .container
           .six.columns
             .search-input
               span.fa.fa-search
-              input#search(type="text" ng-model="search" placeholder="Search projects...")
+              input#search(type="text" ng-model="search" placeholder="{{'Search projects...' | translate}}")
           .six.columns
             .sort-input
               span.fa.fa-sort
-              span.sort-label Ordering by: 
+              span.sort-label(translate) Ordering by: 
               select(ng-model="sort")
-                option(value="year") latest projects
-                option(value="github") recent activity
-                option(value="name") name
+                option(value="year" translate) latest projects
+                option(value="github" translate) recent activity
+                option(value="name" translate) name
         .currently-viewing
           .container
             .twelve.columns
-              p(ng-show="!search && !filtered.techs && !filtered.tags") Currently viewing all projects.
-              p(ng-show="search || filtered.techs || filtered.tags") Currently viewing projects 
-                span(ng-show="search") containing
+              p(ng-show="!search && !filtered.techs && !filtered.tags" translate) Currently viewing all projects.
+              p(ng-show="search || filtered.techs || filtered.tags")
+                span(translate) Currently viewing projects 
+                span(ng-show="search")
+                  span(translate) containing
                   =" "
                   span.term {{search}}
                 span(ng-show="search && (filtered.techs || filtered.tags)")
                   =" "
-                  | and
+                  span(translate) and
                   =" "
-                span(ng-show="filtered.tags || filtered.techs") tagged
+                span(ng-show="filtered.tags || filtered.techs")
+                  span(translate) tagged
                   =" "
                 span.term(ng-show="filtered.tags") {{filtered.tags}}
                 span.term(ng-show="filtered.techs")
                   span(ng-show="filtered.tags") ,
                   = " " 
                   {{filtered.techs}}
-                a.button(ng-click="resetFilters()") Reset filters
+                a.button(ng-click="resetFilters()") 
+                  span(translate) Reset filters
                   span.fa.fa-close
     article.project(ng-repeat="project in projects | filter:search | byCommaTags:filtered.techs:'techs' | byCommaTags:filtered.tags:'tags' | orderBy:projectSort(sort):reverse" ng-hide="project.$id == viewingProject")
       .container
@@ -87,22 +91,22 @@ block body
             a(href="javascript:void(0);" ng-click="edit(project)" title="Edit") E
             a(href="javascript:void(0);" ng-click="remove(project)" title="Remove") R
           h3
-            a(ui-sref="project({projectId: project['$id']})") {{project.name | translate}}
+            a(ui-sref="project({projectId: project['$id']})") {{project.name | i18n}}
             span.year(ng-show="project.launch_year") ({{project.launch_year}})
       .container
         .four.columns
           .project-meta.container.full
-            gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="true" ng-show="project.github && latestCommit(project) !== -1" background-color="'#333333'")
+            gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="true" tooltip-label="'Recent code activity on GitHub' | translate" ng-show="project.github && latestCommit(project) !== -1" background-color="'#333333'")
             p.tags(ng-show="project.tags")
               span.fa.fa-tag
-              span(ng-repeat="tag in (project.tags | translate | commaSplit)") {{tag}}
+              span(ng-repeat="tag in (project.tags | i18n | commaSplit)") {{tag}}
             p.tags(ng-show="project.techs")
               span.fa.fa-gear
-              span(ng-repeat="tech in (project.techs | translate | commaSplit)") {{tech}}
+              span(ng-repeat="tech in (project.techs | i18n | commaSplit)") {{tech}}
             .links
               a.fa.fa-link(href="{{project.url}}" ng-show="project.url" target="_blank" rel="external")
               a.fa.fa-github(href="http://github.com/{{project.github}}" ng-show="project.github" target="_blank" rel="external")
               a.fa.fa-facebook(href="{{project.facebook}}" ng-show="project.facebook" target="_blank" rel="external")
               a.fa.fa-twitter(href="http://twitter.com/{{project.twitter}}" ng-show="project.twitter" target="_blank" rel="external")
         .six.columns
-          p.description {{project.description | translate}}
+          p.description {{project.description | i18n}}

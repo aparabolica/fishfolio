@@ -107,7 +107,8 @@
     app.factory('Lang', [
       '$cookies',
       '$stateParams',
-      function($cookies, $stateParams) {
+      'gettextCatalog',
+      function($cookies, $stateParams, gettextCatalog) {
 
         var userLang = navigator.language || navigator.userLanguage;
 
@@ -129,6 +130,14 @@
 
         var curLang = $cookies.get('lang');
 
+        var gettextLang = 'en';
+        if(curLang == 'pt')
+          gettextLang = 'pt_BR';
+        if(curLang == 'es')
+          gettextLang = 'es_ES';
+
+        gettextCatalog.setCurrentLanguage(gettextLang);
+
         return {
           get: function() {
             return curLang;
@@ -145,7 +154,7 @@
       }
     ]);
 
-    app.filter('translate', [
+    app.filter('i18n', [
       'Lang',
       function(Lang) {
         return function(input) {

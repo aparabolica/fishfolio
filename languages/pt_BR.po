@@ -1,0 +1,89 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"POT-Creation-Date: \n"
+"PO-Revision-Date: \n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: pt_BR\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.7.1\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+#: dist/index.html:1
+msgid "Currently viewing all projects."
+msgstr "Visualizando todos os projetos."
+
+#: dist/index.html:1
+msgid "Currently viewing projects"
+msgstr "VIsualizando projetos"
+
+#: dist/index.html:1 dist/views/layouts/site.html:1
+msgid "Login"
+msgstr "Entrar"
+
+#: dist/index.html:1 dist/views/layouts/site.html:1
+msgid "Logout"
+msgstr "Sair"
+
+#: dist/index.html:1
+msgid "Ordering by:"
+msgstr "Ordenado por:"
+
+#: dist/index.html:1
+msgid "Project tags"
+msgstr "Tags de projetos"
+
+#: dist/index.html:1
+msgid "Projects"
+msgstr "Projetos"
+
+#: dist/views/project.html:1
+msgid "Recent activity on GitHub"
+msgstr "Atividade recente no GitHub"
+
+#: dist/index.html:1
+msgid "Recent code activity on GitHub"
+msgstr "Atividade recente no GitHub"
+
+#: dist/index.html:1
+msgid "Reset filters"
+msgstr "Limpar filtros"
+
+#: dist/index.html:1
+msgid "Search projects..."
+msgstr "Buscar projetos..."
+
+#: dist/index.html:1 dist/views/layouts/site.html:1
+msgid "Settings"
+msgstr "Configurações"
+
+#: dist/index.html:1
+msgid "Technologies"
+msgstr "Tecnologias"
+
+#: dist/index.html:1
+msgid "and"
+msgstr "e"
+
+#: dist/index.html:1
+msgid "containing"
+msgstr "contendo"
+
+#: dist/index.html:1
+msgid "latest projects"
+msgstr "últimos projetos"
+
+#: dist/index.html:1
+msgid "name"
+msgstr "nome"
+
+#: dist/index.html:1
+msgid "recent activity"
+msgstr "atividade recente"
+
+#: dist/index.html:1
+msgid "tagged"
+msgstr "marcado"
