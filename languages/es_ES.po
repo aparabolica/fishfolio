@@ -1,89 +1,88 @@
 msgid ""
 msgstr ""
-"Content-Type: text/plain; charset=UTF-8\n"
-"Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
 "PO-Revision-Date: \n"
-"Language-Team: \n"
-"MIME-Version: 1.0\n"
-"X-Generator: Poedit 1.8.7.1\n"
 "Last-Translator: \n"
-"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language-Team: \n"
 "Language: es_ES\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.12\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: dist/index.html:1
 msgid "Currently viewing all projects."
-msgstr ""
+msgstr "Está viendo todos los proyectos."
 
 #: dist/index.html:1
 msgid "Currently viewing projects"
-msgstr ""
+msgstr "Está viendo proyectos"
 
 #: dist/index.html:1 dist/views/layouts/site.html:1
 msgid "Login"
-msgstr ""
+msgstr "Iniciar Sesión"
 
 #: dist/index.html:1 dist/views/layouts/site.html:1
 msgid "Logout"
-msgstr ""
+msgstr "Cerrar Sesión"
 
 #: dist/index.html:1
 msgid "Ordering by:"
-msgstr ""
+msgstr "Ordernando por:"
 
 #: dist/index.html:1
 msgid "Project tags"
-msgstr ""
+msgstr "Etiquetas de proyecto"
 
 #: dist/index.html:1
 msgid "Projects"
-msgstr ""
+msgstr "Proyectos"
 
-#: dist/views/project.html:1
-msgid "Recent activity on GitHub"
-msgstr ""
-
-#: dist/index.html:1
-msgid "Recent code activity on GitHub"
-msgstr ""
+#: dist/index.html:1 dist/views/project.html:1
+msgid "Recent activity in code repository"
+msgstr "Actividad reciente en el repositorio de código"
 
 #: dist/index.html:1
 msgid "Reset filters"
-msgstr ""
+msgstr "Borrar filtros"
 
 #: dist/index.html:1
 msgid "Search projects..."
-msgstr ""
+msgstr "Buscar proyectos..."
 
 #: dist/index.html:1 dist/views/layouts/site.html:1
 msgid "Settings"
-msgstr ""
+msgstr "Configuraciones"
 
 #: dist/index.html:1
 msgid "Technologies"
-msgstr ""
+msgstr "Tecnologías"
 
 #: dist/index.html:1
 msgid "and"
-msgstr ""
+msgstr "y"
 
 #: dist/index.html:1
 msgid "containing"
-msgstr ""
+msgstr "conteniendo"
 
 #: dist/index.html:1
 msgid "latest projects"
-msgstr ""
+msgstr "últimos proyectos"
 
 #: dist/index.html:1
 msgid "name"
-msgstr ""
+msgstr "nombre"
 
 #: dist/index.html:1
 msgid "recent activity"
-msgstr ""
+msgstr "actividad reciente"
 
 #: dist/index.html:1
 msgid "tagged"
-msgstr ""
+msgstr "etiquetados como"
+
+#~ msgid "Recent code activity on GitHub"
+#~ msgstr "Actividad reciente en el repositorio de código."

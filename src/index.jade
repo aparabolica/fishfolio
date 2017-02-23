@@ -97,7 +97,7 @@ block body
       .container
         .four.columns
           .project-meta.container.full
-            gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="true" tooltip-label="'Recent code activity on GitHub' | translate" ng-show="project.github && latestCommit(project) !== -1" background-color="'#333333'")
+            gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="true" tooltip-label="'Recent activity in code repository' | translate" ng-show="project.github && latestCommit(project) !== -1" background-color="'#333333'")
             p.tags(ng-show="project.tags")
               span.fa.fa-tag
               span(ng-repeat="tag in (project.tags | i18n | commaSplit)") {{tag}}

@@ -27,7 +27,7 @@ section#projects.single-project
     .gh(ng-show="project.github && latestCommit(project) !== -1")
       .container
         .twelve.columns
-          h3(translate) Recent activity on GitHub
+          h3(translate) Recent activity in code repository
           #gh-chart(ng-show="project.github")
             gh-chart(data="commitActivity" line-color="'#999'" tooltip="true" full="true")
     .long-description(ng-show="project.long_description" ng-bind-html="project.long_description | i18n | toHtml")

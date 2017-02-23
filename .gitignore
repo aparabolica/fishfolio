@@ -5,3 +5,5 @@ dist
 .git
 .grunt
 config.json
+languages/template.pot
+src/js/translations.js
