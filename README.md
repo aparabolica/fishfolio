@@ -30,7 +30,7 @@ Copy `config.example.json` to `config.json` and set your variables.
 ### Install app
 
 ```
-$ mkdir -p dist/ && npm install
+$ npm install
 ```
 
 ### Build or watch changes
