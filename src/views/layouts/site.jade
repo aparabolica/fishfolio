@@ -2,7 +2,8 @@ doctype html
 html(ng-controller="SiteCtrl")
   head
     block title
-      title {{about.title | i18n}} - {{about.tagline | i18n}}
+      title(ng-bind="(about.title | i18n) + ' - ' + (about.tagline | i18n)") aparabólica - software studio
+    meta(name="description" content="Studio focused on open source software for open data, online collaboration and map technologies for the web.")
     meta(charset="utf-8")
     meta(http-equiv="X-UA-Compatible" content="IE=edge,chrome=1")
     meta(name="viewport" content="width=device-width,initial-scale=1")
