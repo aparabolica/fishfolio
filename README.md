@@ -6,6 +6,16 @@
 
 ## Development
 
+### Development dependencies
+
+ - node & npm
+ - grunt-cli
+ - bower
+
+```
+$ sudo npm install -g grunt-cli bower
+```
+
 ### Initial setup
 
 Clone app:
