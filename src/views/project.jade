@@ -2,7 +2,7 @@ section#projects.single-project
   article.project
     .container
       .four.columns
-        a.back(ui-sref="home") 
+        a.back(ui-sref="home")
           span.fa.fa-angle-left
           =" "
           span(translate) View all projects
@@ -23,11 +23,12 @@ section#projects.single-project
           a.fa.fa-facebook(href="{{project.facebook}}" ng-show="project.facebook" target="_blank" rel="external")
           a.fa.fa-twitter(href="http://twitter.com/{{project.twitter}}" ng-show="project.twitter" target="_blank" rel="external")
       .eight.columns
-        web-device.desktop-device(src="project.url | i18n" width="1366" height="800")
-          .details
-            a.rel(ng-href="{{project.url | i18n}}" rel="external" target="_blank" title="{{project.name | i18n}}") #
-        .mobile-display(ng-show="project.mobile")
-          web-device.mobile-device(src="project.mobile ? project.url : ''" width="360" height="640")
+        .devices-container
+          web-device.desktop-device(src="project.url | i18n" width="1366" height="800")
+            .details
+              a.rel(ng-href="{{project.url | i18n}}" rel="external" target="_blank" title="{{project.name | i18n}}") #
+          .mobile-display.hide-if-mobile(ng-show="project.mobile")
+            web-device.mobile-device(src="project.mobile ? project.url : ''" width="360" height="640")
     .gh(ng-show="project.github && latestCommit(project) !== -1")
       .container
         .twelve.columns

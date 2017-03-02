@@ -1,0 +1,32 @@
+@media (max-width: 550px) {
+  .hide-if-mobile {
+    display: none;
+  }
+  .container {
+    padding: 0 10px;
+    width: 95%;
+  }
+  .web-device-container {
+    &.desktop-device {
+      &:before {
+        left: -26px;
+        right: -26px;
+        height: 12px;
+      }
+      &:after {
+        bottom: -6px;
+        right: -15px;
+        box-shadow: 0 0 2px .05rem #fff;
+      }
+    }
+  }
+  article.project {
+    .devices-container {
+      width: 90%;
+      margin: 0 auto;
+      .desktop-device {
+        margin-top: 0;
+      }
+    }
+  }
+}

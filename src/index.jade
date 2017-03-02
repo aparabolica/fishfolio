@@ -64,7 +64,7 @@ block body
             .twelve.columns
               p(ng-show="!search && !filtered.techs && !filtered.tags" translate) Currently viewing all projects.
               p(ng-show="search || filtered.techs || filtered.tags")
-                span(translate) Currently viewing projects 
+                span(translate) Currently viewing projects
                 =" "
                 span(ng-show="search")
                   span(translate) containing
@@ -80,9 +80,9 @@ block body
                 span.term(ng-show="filtered.tags") {{filtered.tags}}
                 span.term(ng-show="filtered.techs")
                   span(ng-show="filtered.tags") ,
-                  = " " 
+                  = " "
                   | {{filtered.techs}}
-                a.button(ng-click="resetFilters()"  href="javascript:void(0);") 
+                a.button(ng-click="resetFilters()"  href="javascript:void(0);")
                   span(translate) Reset filters
                   span.fa.fa-close
     article.project.not-found(ng-hide="filteredProjects.length")
@@ -104,7 +104,7 @@ block body
       .container
         .four.columns
           .project-meta.container.full
-            gh-chart(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="true" tooltip-label="'Recent activity in code repository' | translate" ng-show="project.github && latestCommit(project) !== -1" background-color="'#333333'")
+            gh-chart.hide-if-mobile(data="ghData[project.$id].commitActivity" line-color="'#999'" tooltip="true" tooltip-label="'Recent activity in code repository' | translate" ng-show="project.github && latestCommit(project) !== -1" background-color="'#333333'")
             p.tags(ng-show="project.tags")
               span.fa.fa-tag
               span(ng-repeat="tag in (project.tags | i18n | commaSplit)") {{tag}}

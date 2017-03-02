@@ -22,6 +22,7 @@ html(ng-controller="SiteCtrl")
     link(rel="stylesheet" href="static/ng-dialog/css/ngDialog-theme-default.min.css")
     link(rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/textAngular/1.5.16/textAngular.min.css")
     link(rel="stylesheet" href="css/app.css")
+    link(rel="stylesheet" href="css/responsive.css")
     block head
   body(style="opacity:0;")
     .container
@@ -47,7 +48,7 @@ html(ng-controller="SiteCtrl")
     nav#top-nav
       .lang-nav
         a(ng-repeat="l in langs" href="javascript:void(0);" ng-click="setLang(l)" ng-class="{active: lang == l}") {{l}}
-      .site-meta
+      .site-meta.hide-if-mobile
         a(href="javascript:void(0);" ng-click="login()" ng-hide="user" translate) Login
         a(href="javascript:void(0);" ng-click="settings()" ng-show="user" translate) Settings
         a(href="javascript:void(0);" ng-click="authObj.$signOut()" ng-show="user" translate) Logout
